@@ -6,7 +6,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '50 0 */5 * *'
+    - cron: '0 2 */5 * *'
 
 jobs:
   auto_renew:
@@ -29,4 +29,4 @@ jobs:
         env:
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
-        run: python main.py
+        run: sleep $(shuf -i 0-50 -n 1) && python main.py
